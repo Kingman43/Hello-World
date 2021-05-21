@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content=">Roanoke Rapids High 100 year Centennial Treasure Hunt">
+    <meta name="keywords" content=">RRHS Back in time Huey Lewis and the News">
+    <meta name="author" content="Volunteer">
+    <meta content-type="text/html">
+
+    <title>RRHS Centennial Treasure Hunt</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/treasure.css" rel="stylesheet">
+
+
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+	<img src="images/rrhs_60x60.png" alt="RRHS">
+
+	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	  Menu
+	  <i class="fa fa-bars"></i>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarResponsive">
+	  <ul class="navbar-nav text-uppercase ml-auto">
+
+          <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="faq.html">FAQ</a>
+          </li>
+
+          <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="https://www.rrgsd.org/o/rrhs">RRHS</a>
+          </li>
+
+          <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="https://www.rrhsalum.org/" target="_top">Alumni</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="https://www.rrhsalum.org/history.html" target="_top">History</a>
+          </li>
+
+          <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="https://www.facebook.com/groups/239574136218922">FB Gang</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href=mailto:rrhsalumniassociation@gmail.com target="_top">Email</a>
+          </li>
+
+	  </ul>
+	</div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead">
+      <div class="container">
+	<div class="intro-text">
+	  <div class="intro-lead-in">RRHS Centennial Treasure</div>
+	  <div class="intro-heading">Welcome and good luck</div>
+	</div>
+      </div>
+    </header>
+
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <br>
+                No digging. No climbling. The treasure is on publicly accessible property.
+                <div class="spacerking"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row text-center">
+                <div class="col-md-12">
+                <audio src="https://download.mp3-rr.buzz/d/Huey-Lewis-amp-The-News-Back-In-Time.mp3" controls>
+                </audio>
+                <br>
+                (Hit play to sing along)
+                <div class="spacerking"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tributes -->
+      <div class="container">
+	<div class="spacerking"></div>
+
+	<div class="row text-center">
+	  <div class="col-md-12">
+	    <h5 id="serverHtml">Retrieving clues</h5>
+	  </div>
+	</div>
+
+
+	<div class="spacerking"></div>
+     </div>
+
+
+
+    <!-- Footer -->
+    <footer>
+
+
+	<span class="copyright">
+	 <a js-scroll-trigger" href="mailto:Mark@ribity.com?subject=Question about the RRHS Treasure Hunt" target="_top">Email us</a>
+	  if you have a question
+	</scan>
+	<br>
+	<span class="copyright">Thank you for participating</span>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+
+    <!-- This should ALWAYS be treasure.js -->
+    <script src="js/treasure.js"></script>
+    <script>
+       console.log("before ajax");
+	 $.getJSON({
+
+	   type : 'POST',
+	   contentType: 'application/json',
+
+	   url : 'https://px994co0uk.execute-api.us-east-1.amazonaws.com/test/treasureclues/',
+	   crossDomain: true,
+	   dataType: 'json',
+	   data: {},
+	   success : function(data, status) {
+	       document.getElementById("serverHtml").innerHTML = data.html;
+	   },
+	   error : function(request,error)
+	   {
+	       alert("Request: "+JSON.stringify(request));
+	   },
+	   complete: function () {
+		   }
+       });
+       console.log("after ajax");
+    </script>
+    <script>
+const button = document.querySelector("#button");
+const icon = document.querySelector("#button > i");
+const audio = document.querySelector("audio");
+
+button.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.volume = 0.2;
+    audio.play();
+    icon.classList.remove('fa-volume-up');
+    icon.classList.add('fa-volume-mute');
+
+  } else {
+    audio.pause();
+    icon.classList.remove('fa-volume-mute');
+    icon.classList.add('fa-volume-up');
+  }
+  button.classList.add("fade");
+});
+    </script>
+  </body>
+
+</html>
